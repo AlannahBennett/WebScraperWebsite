@@ -1,1 +1,15 @@
+body {
+  background-color: #DDE7E9;
+}
+
+.App {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.myImage {
+  max-width: 70%;
+  height: auto;
+}
 

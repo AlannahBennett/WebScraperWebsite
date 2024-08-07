@@ -13,9 +13,10 @@ def scrape():
     response = requests.get(url, params=params)
     soup = BeautifulSoup(response.text, 'html.parser')
 
-    # Do something with the soup object here
+    # Extract all text from the HTML
+    text = soup.get_text()
 
-    return {'message': 'Scraped successfully'}
+    return {'message': 'Scraped successfully', 'text': text}
 
 if __name__ == '__main__':
     app.run(debug=True)

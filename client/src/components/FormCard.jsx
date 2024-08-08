@@ -1,24 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
-import axios from 'axios';
+import axios from "axios";
 
-
-function FormCard() {
+function FormCard({ setScrapedText, setError, error }) {
   const [url, setUrl] = useState('');
-  const [params, setParams] = useState('');
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setScrapedText('');
+
     try {
-      const response = await axios.post('http://localhost:5000/scrape', { url, params });
-      console.log(response.data);
-    } catch (error) {
-      console.error('Error:', error);
+      const response = await axios.post('http://localhost:5000/scrape', { url });
+      setScrapedText(response.data.text);
+    } catch (err) {
+      setError('Failed to scrape the URL. Please try again.');
     }
-  }
+  };
+
   return (
     <Card style={{ width: "30rem" }}>
       <Card.Body>
@@ -27,20 +28,19 @@ function FormCard() {
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="urlInput">
               <Form.Label>Please input a URL:</Form.Label>
-              <Form.Control type="text" placeholder="Enter URL" value={url} onChange={e => setUrl(e.target.value)} />
-              <Form.Text className="text-muted">
-                //any exceptions to url
-              </Form.Text>
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="urlparams">
-              <Form.Label>What would you like to return?</Form.Label>
-              <Form.Control type="text" placeholder="Password" value={params} onChange={e => setParams(e.target.value)} />
+              <Form.Control
+                type="text"
+                placeholder="Enter URL"
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+              />
+              <Form.Text className="text-muted">Enter a valid URL.</Form.Text>
             </Form.Group>
             <Button variant="primary" type="submit">
               Submit
             </Button>
           </Form>
+          {error && <p style={{ color: 'red' }}>{error}</p>}
         </Card.Text>
       </Card.Body>
     </Card>

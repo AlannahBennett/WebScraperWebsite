@@ -21,7 +21,7 @@ function FormCard({ setScrapedText, setError, error }) {
   };
 
   return (
-    <Card style={{ width: "30rem" }}>
+    <Card className="my-5">
       <Card.Body>
         <Card.Title>URL Scraper</Card.Title>
         <Card.Text>

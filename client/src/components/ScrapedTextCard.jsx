@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ScrapedTextCard = ({ text }) => {
   return (
-    <div className="card" style={{ margin: '20px' }}>
+    <div className="card" style={{  maxHeight: '400px', overflowY: 'auto' }}>
       <div className="card-body">
         <h5 className="card-title">Scraped Text</h5>
         <pre className="card-text" style={{ whiteSpace: 'pre-wrap' }}>

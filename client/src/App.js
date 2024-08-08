@@ -24,7 +24,7 @@ function App() {
               height="30"
               className="d-inline-block align-top"
             />{' '}
-            React Bootstrap
+            Website Scraper
           </Navbar.Brand>
         </Container>
       </Navbar>
@@ -34,7 +34,7 @@ function App() {
             <FormCard setScrapedText={setScrapedText} setError={setError} error={error} />
             <ScrapedTextCard text={scrapedText} />
           </Col>
-          <Col md={6} className="d-flex align-items-center justify-content-center" style={{ height: '100vh' }}>
+          <Col md={6} className="d-flex align-items-center justify-content-center" style={{ height: '60vh' }}>
             <img src={mainImg} alt="Main" className="img-fluid" />
           </Col>
         </Row>
